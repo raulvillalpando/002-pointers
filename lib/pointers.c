@@ -13,8 +13,6 @@ void printArray(int *array, int count){
 }
 
 int bubble_sort(int *target, int count){
-
-    printArray(target, count);
     int i, j, swaps = 0;
     for (i = 0; i < count-1; i++){
         for (j = 0; j < count-i-1; j++){
@@ -26,23 +24,36 @@ int bubble_sort(int *target, int count){
             }
         }
     }
-    printf("Array Bubble - Sorteado\n");
-    printArray(target, count);
-    printf("swaps = %d\n",swaps);
 
-  return 0;
+  return swaps;
 }
 
-void insertion_sort(int *collection, int count)
-{
-
+void insertion_sort(int *collection, int count){
+    int i, key, j;
+    for (i = 1; i < count; i++){
+        key = *(collection+i);
+        j = i-1;
+        while (j >= 0 && *(collection+j) > key){
+            *(collection+j+1) = *(collection+j);
+            j = j-1;
+        }
+        *(collection+j+1) = key;
+    }
 }
 
 void reverse(int *collection, int count){
-
+    int i, j, temp;
+    for (i = 0, j = count-1; i < j; i++, j--){
+        temp = *(collection+i);
+        *(collection+i) = *(collection+j);
+        *(collection+j) = temp;
+    }
 }
 
-int calulate_frequency(int *collection, int count, int target)
-{
-  return 0;
+int calulate_frequency(int *collection, int count, int target){
+    int frequency = 0, i;
+    for (i = 0; i < count; i++)
+        if (*(collection+i) == target)
+            frequency++;
+    return frequency;
 }
