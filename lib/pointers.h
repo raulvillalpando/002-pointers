@@ -11,5 +11,7 @@ int bubble_sort(int *collection, int count);
 void insertion_sort(int *collection, int count);
 void reverse(int *collection, int count);
 int calulate_frequency(int *collection, int count, int target);
+//Impresion de array
+void printArray(int *array, int count);
 
 #endif //POINTERS_H
